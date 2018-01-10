@@ -1,17 +1,51 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>C8C8</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content class="outer-content speaker-list">
+  {{email}}
+  <ion-list>
+    <ion-grid fixed>
+      <ion-row align-items-stretch>
+        <ion-col col-12 col-md-6 align-self-stretch align-self-center *ngFor="let post of postItem" approxItemHeight="457px">
+
+            <ion-card class="speaker-card" (click)="selectPostItem(post)">
+                <ion-card-header>
+                    <button ion-item detail-none >
+                      <ion-avatar item-start>
+                        <img src="assets/img/logo.png" alt="Post profile pic">
+                      </ion-avatar>
+                      {{post.title}}
+                    </button>
+                  </ion-card-header>
+
+                  <ion-card-content class="outer-content">
+                    <ion-list>
+                      <button ion-item >
+                        <h3>{{post.time}}</h3>
+                      </button>
+
+                      <button ion-item >
+                        <h3>發文者: {{post.username}}</h3>
+                      </button>
+
+                    </ion-list>
+                  </ion-card-content>
+
+                  <ion-row no-padding>
+                    {{post.content}}
+                  </ion-row>
+            </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+  
+  <ion-fab bottom right #fab>
+    <button ion-fab (click)="showPostForm()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>

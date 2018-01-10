@@ -1,0 +1,16 @@
+page-forget {
+  
+  .ion-label {
+    text-align: center;
+  }
+  .item-inner, ion-item {
+      border-bottom-color: transparent !important;
+      box-shadow: none !important;
+      padding: 5px;
+  }
+  ion-input{
+      border-radius: 25px;
+      border: 1px solid #c8c7cc ;
+      height: 100%;
+  }
+}

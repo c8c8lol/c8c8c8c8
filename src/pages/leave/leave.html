@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="showLeaveForm()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-segment [(ngModel)]="segment" (ionChange)="updateLeave()">
+      <ion-segment-button value="all">
+        審核中
+      </ion-segment-button>
+      <ion-segment-button value="passOrNot">
+        請假紀錄
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentFilter()">
+        <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list #leaveList [hidden]="shownSessions === 0">
+    <ion-item-sliding *ngFor="let item of items"  [hidden]="item.hide">
+
+      <button ion-item>
+          <h3>{{item.name}}</h3>
+          <p>
+            {{item.date}}:
+            {{item.cat}}
+          </p>
+        </button>
+
+      <ion-item-options>
+        <button ion-button color="favorite" (click)="addFavorite(slidingItem, item)" *ngIf="item === 'all'">
+            同意
+          </button>
+        <button ion-button color="danger" (click)="removeFavorite(slidingItem, item, 'Remove Favorite')" *ngIf="item === 'favorites'">
+            Remove
+          </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
+
+  </ion-list>
+
+
+</ion-content>

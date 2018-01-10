@@ -1,17 +1,72 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      班表
     </ion-title>
   </ion-navbar>
+  
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="scheData">
+      <ion-segment-button value="self">
+        自己
+      </ion-segment-button>
+      <ion-segment-button value="all">
+        全部
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-searchbar
+        placeholder="Search"
+        [(ngModel)]="searchkeyword"
+        [showCancelButton]="true"
+        (ionInput)="searchSche($event)"
+        (ionClear)="searchClear($event)"
+        (ionCancel)="searchCancel($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+  <div [ngSwitch]="scheData">
+    <div *ngSwitchCase="'all'">
+      <ion-card no-lines *ngFor="let sche_detail of sche" (click)="go_scheDetail(sche_detail)">
+          <ion-item>
+            <ion-title item-start>{{sche_detail.date}}</ion-title>
+          </ion-item>
+          <ion-item>
+            <p class="workerImg" item-start *ngFor="let worker of sche_detail.worker_pro;">
+              <img src="{{worker}}" />
+            </p>
+          </ion-item>
+      </ion-card>
+    </div>
+
+    <div *ngSwitchCase="'self'">
+        <ion-card no-lines *ngFor="let sche_detail of sche_self" (click)="go_scheDetail(sche_detail)">
+            <ion-item>
+              <ion-title item-start>{{sche_detail.date}}</ion-title>
+            </ion-item>
+            <ion-item>
+              <p class="workerImg" item-start *ngFor="let worker of sche_detail.worker_pro;">
+                <img src="{{worker}}" />
+              </p>
+            </ion-item>
+        </ion-card>
+    </div>
+
+    <div *ngSwitchCase="'search'">
+        <ion-card no-lines *ngFor="let sche_detail of sche_search" (click)="go_scheDetail(sche_detail)">
+            <ion-item>
+              <ion-title item-start>{{sche_detail.date}}</ion-title>
+            </ion-item>
+            <ion-item>
+              <p class="workerImg" item-start *ngFor="let worker of sche_detail.worker_pro;">
+                <img src="{{worker}}" />
+              </p>
+            </ion-item>
+        </ion-card>
+    </div>
+
+  </div>
 </ion-content>

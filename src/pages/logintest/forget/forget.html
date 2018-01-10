@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Forget Password</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+    <ion-list no-lines>
+        <ion-item>
+            <ion-input placeholder="Email" [(ngModel)]="email"></ion-input>
+            <button ion-button item-end (click)="sendEmail()">
+                <ion-icon name="send"></ion-icon>
+            </button>
+        </ion-item>
+    </ion-list>
+	
+</ion-content>

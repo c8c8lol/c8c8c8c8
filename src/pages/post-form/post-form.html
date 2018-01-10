@@ -1,0 +1,33 @@
+<!--
+  Generated template for the PostFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>新增貼文(主管限定)</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>標題</ion-label>
+    <ion-input type="text" [(ngModel)]="postItem.title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>發文人(抓uid)</ion-label>
+    <ion-input type="text" [(ngModel)]="postItem.username"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>時間(送出系統時間)</ion-label>
+    <ion-input type="text" [(ngModel)]="postItem.time"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-textarea placeholder="內文" [(ngModel)]="postItem.content"></ion-textarea>
+  </ion-item>
+
+  <button ion-button block (click)="addPostItem(postItem)">送出</button>
+</ion-content>

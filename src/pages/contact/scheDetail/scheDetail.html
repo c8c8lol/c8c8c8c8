@@ -1,0 +1,14 @@
+<ion-content padding>
+  <ion-item>
+    {{sche.date}}
+    <button ion-button item-end (click)="back()">
+        <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-item>
+  <ion-list no-lines>
+    <ion-item *ngFor="let sche_detail of sche.sche_time">
+       <label item-start>{{sche_detail.time}}</label>
+       <ion-label *ngFor="let worker of sche_detail.worker">{{worker}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
