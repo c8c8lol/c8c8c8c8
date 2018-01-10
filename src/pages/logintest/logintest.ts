@@ -9,7 +9,7 @@ import { globalUser } from '../../app/global';
 
 import { TabsPage } from '../tabs/tabs';
 import { ForgetPage } from './forget/forget';
-//import { ProfilePage } from '../profile/profile';
+import { ProfilePage } from '../profile/profile';
 
 /**
  * Generated class for the LogintestPage page.
@@ -115,6 +115,7 @@ export class LogintestPage {
   }
 
   private setGlobalUserData(){
+    /*
     let profileData : any;
     this.fire.authState.take(1).subscribe(data => {
       if (data && data.email && data.uid) {
@@ -126,10 +127,12 @@ export class LogintestPage {
           globalUser.username = profileData.username;
           globalUser.workerID = profileData.workerID;
 
-          this.navCtrl.setRoot('TabsPage');
+          this.navCtrl.setRoot(TabsPage);
         });
       }
     });
+    */
+    this.navCtrl.push(ProfilePage);
   }
 
 }

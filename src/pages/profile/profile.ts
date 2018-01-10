@@ -5,6 +5,8 @@ import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 
 import { Profile } from '../../models/profile';
 import { TabsPage } from '../tabs/tabs';
+import firebase from 'firebase'; //facebook login
+import { globalUser } from '../../app/global';
 
 
 /**
@@ -32,8 +34,31 @@ export class ProfilePage {
   createProfile(){
     this.fire.authState.take(1).subscribe(auth => {
         this.db.object(`profile/${auth.uid}`).set(this.profile)
-        . then(()=>this.navCtrl.setRoot('TabsPage'));
-    })
+        . then(()=>{
+
+
+          let profileData : any;
+          this.fire.authState.take(1).subscribe(data => {
+            if (data && data.email && data.uid) {
+              const personRef: firebase.database.Reference = firebase.database().ref(`profile/${data.uid}`);
+              personRef.on('value', personSnapshot => {
+                profileData = personSnapshot.val();
+                //console.log(profileData.username);
+                //set global user
+                globalUser.username = profileData.username;
+                globalUser.workerID = profileData.workerID;
+      
+                this.navCtrl.push(ProfilePage);
+              });
+            }
+          });
+
+        this.navCtrl.pop();
+
+        this.navCtrl.setRoot('TabsPage')
+      });
+        
+    });
   }
 
 }
