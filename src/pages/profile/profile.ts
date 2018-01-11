@@ -35,29 +35,12 @@ export class ProfilePage {
     this.fire.authState.take(1).subscribe(auth => {
         this.db.object(`profile/${auth.uid}`).set(this.profile)
         . then(()=>{
-
-
-          let profileData : any;
-          this.fire.authState.take(1).subscribe(data => {
-            if (data && data.email && data.uid) {
-              const personRef: firebase.database.Reference = firebase.database().ref(`profile/${data.uid}`);
-              personRef.on('value', personSnapshot => {
-                profileData = personSnapshot.val();
-                //console.log(profileData.username);
-                //set global user
-                globalUser.username = profileData.username;
-                globalUser.workerID = profileData.workerID;
+                globalUser.username = this.profile.username;
+                globalUser.workerID = this.profile.workerID;
+                globalUser.phone = this.profile.phone;                
       
-                this.navCtrl.push(ProfilePage);
-              });
-            }
-          });
-
-        this.navCtrl.pop();
-
-        this.navCtrl.setRoot('TabsPage')
-      });
-        
+                this.navCtrl.setRoot('TabsPage');
+              });        
     });
   }
 
