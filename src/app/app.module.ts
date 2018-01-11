@@ -22,7 +22,6 @@ import { ScheduleTestPage } from '../pages/schedule-test/schedule-test';
 import { GenSchedulePage } from '../pages/gen-schedule/gen-schedule';
 import { ForgetPage } from '../pages/logintest/forget/forget';
 import { EditPersonPage } from '../pages/edit-person/edit-person';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 

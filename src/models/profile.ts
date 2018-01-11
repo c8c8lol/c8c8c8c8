@@ -1,5 +1,4 @@
 export interface Profile {
-  $key?: string;
   username: string;
   workerID: string;
   email: string;
