@@ -70,5 +70,4 @@ export class EditPersonPage {
     this.profileItemSubscription.unsubscribe();
   }
   //async pipe: Subscription and unsubscription is handled automatically by angular
-
 }
