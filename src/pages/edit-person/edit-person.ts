@@ -9,14 +9,8 @@ import { User } from './../../models/user';
 import { PersonPage } from '../person/person';
 import { globalUser } from '../../app/global';
 import { Subscription } from 'rxjs/Subscription';
-/**
- * Generated class for the EditPersonPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AboutPage } from '../about/about';
 
-//@IonicPage()
 @Component({
   selector: 'page-edit-person',
   templateUrl: 'edit-person.html',
@@ -26,6 +20,9 @@ export class EditPersonPage {
   profileItemSubscription: Subscription;
   profileItemRef$: FirebaseObjectObservable<Profile>;
   profileItem = {} as Profile;
+
+  secret : string;
+  a = new AboutPage();
 
   constructor(private db: AngularFireDatabase,private fire: AngularFireAuth,
     public navCtrl: NavController, public navParams: NavParams) {
@@ -40,6 +37,11 @@ export class EditPersonPage {
       this.profileItemSubscription =
       this.profileItemRef$.subscribe(
         profileItem => this.profileItem = profileItem);
+  }
+
+  getPersonSecret(){
+    this.secret = this.a.getSecret();
+    alert(this.secret);
   }
 
   ionViewDidLoad() {

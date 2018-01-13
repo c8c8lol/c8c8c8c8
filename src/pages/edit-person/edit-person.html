@@ -24,6 +24,7 @@
       <ion-input type="text" [(ngModel)]="profileItem.email"></ion-input>
     </ion-item>
     
-  
+    <button ion-button block (click)="getPersonSecret()">GetSecret</button>
+
     <button ion-button block (click)="editPersonInfo(profileItem)">確認修改</button>
   </ion-content>
