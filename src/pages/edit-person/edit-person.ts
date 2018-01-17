@@ -10,7 +10,14 @@ import { PersonPage } from '../person/person';
 import { globalUser } from '../../app/global';
 import { Subscription } from 'rxjs/Subscription';
 import { AboutPage } from '../about/about';
+/**
+ * Generated class for the EditPersonPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
+//@IonicPage()
 @Component({
   selector: 'page-edit-person',
   templateUrl: 'edit-person.html',
@@ -22,7 +29,7 @@ export class EditPersonPage {
   profileItem = {} as Profile;
 
   secret : string;
-  a = new AboutPage();
+  a= new AboutPage();
 
   constructor(private db: AngularFireDatabase,private fire: AngularFireAuth,
     public navCtrl: NavController, public navParams: NavParams) {
@@ -39,8 +46,8 @@ export class EditPersonPage {
         profileItem => this.profileItem = profileItem);
   }
 
-  getPersonSecret(){
-    this.secret = this.a.getSecret();
+  getpersonSecret(){
+    this.secret=this.a.getSecret();
     alert(this.secret);
   }
 
