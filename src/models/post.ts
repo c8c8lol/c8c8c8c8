@@ -1,11 +1,10 @@
-export interface Post {
+import { UserData } from "./userdata";
+
+export interface Post extends UserData{
   $key?: string,
   title: string;
-  username: string;
   time: string;
   content: string;
-  image : string;
-  workerID : string;
 }
 
 //add ? means the key is optional
